@@ -59,7 +59,7 @@ export default function Home() {
             fontSize: "13px",
           }}
         >
-          AI Stereotypes Intelligence
+          AI Tokan Intelligence
         </motion.div>
 
         <motion.h1
@@ -120,15 +120,22 @@ export default function Home() {
               if (e.key === "Enter") handleSubmit();
             }}
             style={{
-              flex: 1,
-              padding: "18px 20px",
-              borderRadius: "16px",
-              border: "1px solid rgba(255,255,255,0.08)",
-              background: "rgba(2,6,23,0.8)",
-              color: "white",
-              outline: "none",
-              fontSize: "15px",
-            }}
+  flex: 1,
+  padding: "18px 20px",
+  borderRadius: "16px",
+  border: "1px solid rgba(255,255,255,0.08)",
+  background: "rgba(2,6,23,0.8)",
+  color: "white",
+  outline: "none",
+  fontSize: "15px",
+  boxShadow: "0 0 0px rgba(37,99,235,0)",
+  transition: "all 0.25s ease"
+}}
+onFocus={(e) =>
+  (e.currentTarget.style.boxShadow =
+    "0 0 0 2px rgba(37,99,235,0.6), 0 0 25px rgba(37,99,235,0.4)")
+}
+onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
           />
 
           <motion.button
