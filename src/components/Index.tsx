@@ -28,183 +28,113 @@ export default function Home() {
   };
 
   return (
-    <main
+  <main style={{ position: "relative", height: "100vh", color: "white" }}>
+    
+    {/* Background */}
+    <img
+  src="/interier.jpg"
+  alt="Luxury interior"
+  style={{
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    filter: "brightness(0.45)",
+  }}
+/>
+
+    {/* Overlay */}
+    <div
       style={{
-        minHeight: "100vh",
+        position: "absolute",
+        inset: 0,
         background:
-          "radial-gradient(circle at 50% 20%, #1e293b 0%, #020617 45%, #000 100%)",
-        color: "white",
-        padding: "80px 20px",
+          "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85))"
+      }}
+    />
+
+    {/* Content */}
+    <div
+      style={{
+        position: "relative",
+        zIndex: 2,
+        maxWidth: "900px",
+        margin: "0 auto",
+        paddingTop: "220px",
+        textAlign: "center"
       }}
     >
-      <section
-        style={{
-          maxWidth: "980px",
-          margin: "0 auto",
-          textAlign: "center",
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            display: "inline-block",
-            padding: "8px 14px",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: "999px",
-            color: "#93c5fd",
-            background: "rgba(255,255,255,0.04)",
-            marginBottom: "22px",
-            fontSize: "13px",
-          }}
-        >
-          AI Tokan Intelligence
-        </motion.div>
+      <h1 style={{ fontSize: "56px", fontWeight: 700 }}>
+        Seamless AI Insight,
+        <br />
+        Unbiased Perspective.
+      </h1>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          style={{
-            fontSize: "clamp(42px, 7vw, 86px)",
-            lineHeight: "0.95",
-            margin: "0 auto",
-            maxWidth: "900px",
-            letterSpacing: "-0.06em",
-            fontWeight: 700,
-          }}
-        >
-          Understand perception.
-          <br />
-          Without the noise.
-        </motion.h1>
+      <p style={{ marginTop: "20px", color: "#cbd5f5" }}>
+        Analyze stereotypes instantly with AI
+      </p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{
-            maxWidth: "620px",
-            margin: "24px auto 38px",
-            color: "#94a3b8",
-            fontSize: "17px",
-            lineHeight: "1.7",
-          }}
-        >
-          Enter a topic, group, profession, culture, or idea — get a careful,
-          neutral AI analysis of common stereotypes, context, and nuance.
-        </motion.p>
+      {/* INPUT + BUTTON */}
+      <div style={{ marginTop: "30px", display: "flex", gap: "10px", justifyContent: "center" }}>
+        <input
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Try: smart systems, home theater..."
+  onFocus={(e) =>
+    (e.currentTarget.style.boxShadow =
+      "0 0 0 2px rgba(37,99,235,0.6), 0 0 20px rgba(37,99,235,0.4)")
+  }
+  onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
+  style={{
+    padding: "14px",
+    width: "400px",
+    borderRadius: "8px",
+    border: "1px solid rgba(255,255,255,0.2)",
+    background: "rgba(0,0,0,0.5)",
+    color: "white",
+    outline: "none",
+    transition: "all 0.2s ease"
+  }}
+/>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          style={{
-            maxWidth: "720px",
-            margin: "0 auto",
-            padding: "10px",
-            borderRadius: "24px",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow: "0 30px 100px rgba(37, 99, 235, 0.22)",
-            display: "flex",
-            gap: "10px",
-          }}
-        >
-          <input
-            placeholder="Try: architects, Ukrainians, luxury buyers..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSubmit();
-            }}
-            style={{
-  flex: 1,
-  padding: "18px 20px",
-  borderRadius: "16px",
-  border: "1px solid rgba(255,255,255,0.08)",
-  background: "rgba(2,6,23,0.8)",
-  color: "white",
-  outline: "none",
-  fontSize: "15px",
-  boxShadow: "0 0 0px rgba(37,99,235,0)",
-  transition: "all 0.25s ease"
-}}
-onFocus={(e) =>
-  (e.currentTarget.style.boxShadow =
-    "0 0 0 2px rgba(37,99,235,0.6), 0 0 25px rgba(37,99,235,0.4)")
-}
-onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
-          />
+        <button
+  onClick={handleSubmit}
+  disabled={loading}
+  style={{
+    padding: "14px 24px",
+    borderRadius: "8px",
+    border: "none",
+    background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+    color: "white",
+    fontWeight: 600,
+    cursor: loading ? "not-allowed" : "pointer",
+    boxShadow: "0 10px 30px rgba(124,58,237,0.4)"
+  }}
+>
+  {loading ? "Thinking..." : "Analyze"}
+</button>
+      </div>
 
-          <motion.button
-            onClick={handleSubmit}
-            disabled={loading}
-            whileTap={{ scale: 0.96 }}
-            whileHover={{ scale: loading ? 1 : 1.03 }}
-            style={{
-              padding: "0 26px",
-              borderRadius: "16px",
-              background: loading
-                ? "rgba(255,255,255,0.08)"
-                : "linear-gradient(135deg, #2563eb, #7c3aed)",
-              color: "white",
-              border: "none",
-              fontSize: "15px",
-              fontWeight: 600,
-              cursor: loading ? "not-allowed" : "pointer",
-              minWidth: "130px",
-              boxShadow: loading
-                ? "none"
-                : "0 15px 40px rgba(37, 99, 235, 0.35)",
-            }}
-          >
-            {loading ? "Thinking..." : "Analyze"}
-          </motion.button>
-        </motion.div>
-
-        {(loading || result) && (
-          <motion.div
-            key={result || "loading"}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            style={{
-              margin: "46px auto 0",
-              maxWidth: "820px",
-              textAlign: "left",
-              background: "rgba(2,6,23,0.72)",
-              backdropFilter: "blur(18px)",
-              padding: "30px",
-              borderRadius: "24px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              color: "#dbeafe",
-              lineHeight: "1.75",
-              fontSize: "15px",
-              boxShadow: "0 30px 90px rgba(0,0,0,0.35)",
-            }}
-          >
-            {loading ? (
-              <div style={{ textAlign: "center", color: "#93c5fd" }}>
-                ⚡ Analyzing perception patterns...
-              </div>
-            ) : (
-              result.split("\n").map((line, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: i * 0.04 }}
-                  style={{ marginBottom: "14px" }}
-                >
-                  {line}
-                </motion.p>
-              ))
-            )}
-          </motion.div>
-        )}
-      </section>
-    </main>
+      {/* RESULT */}
+      {result && (
+        <div
+  style={{
+    marginTop: "40px",
+    maxWidth: "700px",
+    marginInline: "auto",
+    padding: "24px",
+    borderRadius: "16px",
+    background: "rgba(255,255,255,0.05)",
+    backdropFilter: "blur(20px)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    lineHeight: "1.7"
+  }}
+>
+          {result}
+        </div>
+      )}
+    </div>
+  </main>
   );
 }
