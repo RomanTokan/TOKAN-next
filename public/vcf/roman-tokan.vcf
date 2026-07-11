@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Tokan;Roman;;;
+FN:Roman Tokan
+ORG:TOKAN
+TITLE:Founder & Technology Advisor
+EMAIL;TYPE=INTERNET,WORK:info@tokan.tech
+TEL;TYPE=WORK,VOICE:+18452699746
+URL;TYPE=WORK:https://tokan.tech
+ADR;TYPE=WORK:;;White Plains;NY;;;United States
+NOTE:Luxury Smart Home Integration. Technology. Perfectly Integrated.
+END:VCARD
